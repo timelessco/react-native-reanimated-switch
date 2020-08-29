@@ -95,17 +95,16 @@ const styles = StyleSheet.create({
 
 RNSwitch.propTypes = {
   handleOnPress: PropTypes.func.isRequired,
+  value: PropTypes.bool.isRequired,
   activeTrackColor: PropTypes.string,
   inActiveTrackColor: PropTypes.string,
   thumbColor: PropTypes.string,
-  value: PropTypes.bool,
 };
 
 RNSwitch.defaultProps = {
   activeTrackColor: "#007AFF",
   inActiveTrackColor: "#F2F5F7",
   thumbColor: "#FFF",
-  value: false,
 };
 
 export default RNSwitch;
