@@ -4,7 +4,8 @@
   "description": "A simple reanimated switch for iOS and Android",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
   },
   "peerDependencies": {
     "react": "16.x",
