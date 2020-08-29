@@ -8,11 +8,11 @@ const RNSwitch = ({
   activeTrackColor,
   inActiveTrackColor,
   thumbColor,
+  value,
 }) => {
   const [switchTranslate] = useState(new Animated.Value(0));
-  const [on, setOn] = useState(false);
   useEffect(() => {
-    if (on) {
+    if (value) {
       spring(switchTranslate, {
         toValue: 21,
         mass: 1,
@@ -33,19 +33,19 @@ const RNSwitch = ({
         restDisplacementThreshold: 0.001,
       }).start();
     }
-  }, [on, switchTranslate]);
+  }, [value, switchTranslate]);
   const interpolateBackgroundColor = {
     backgroundColor: interpolateColors(switchTranslate, {
       inputRange: [0, 22],
       outputColorRange: [inActiveTrackColor, activeTrackColor],
     }),
   };
-  const handlePressAction = () => {
-    handleOnPress(!on);
-    setOn(!on);
-  };
+  const memoizedOnSwitchPressCallback = React.useCallback(() => {
+    handleOnPress(!value);
+  }, [handleOnPress, value]);
+
   return (
-    <Pressable onPress={handlePressAction}>
+    <Pressable onPress={memoizedOnSwitchPressCallback}>
       <Animated.View
         style={[styles.containerStyle, interpolateBackgroundColor]}>
         <Animated.View
@@ -97,12 +97,14 @@ RNSwitch.propTypes = {
   activeTrackColor: PropTypes.string,
   inActiveTrackColor: PropTypes.string,
   thumbColor: PropTypes.string,
+  value: PropTypes.bool,
 };
 
 RNSwitch.defaultProps = {
   activeTrackColor: '#007AFF',
   inActiveTrackColor: '#F2F5F7',
   thumbColor: '#FFF',
+  value: false,
 };
 
 export default RNSwitch;

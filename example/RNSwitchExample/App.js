@@ -1,21 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
 import RNSwitch from './src/Switch';
 
-const App: () => React$Node = () => {
+const App = () => {
+  const [switchState, setSwitchState] = useState(false);
+  const handleOnPressSwitch = (value) => {
+    setSwitchState(value);
+  };
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.container}>
         <Text style={styles.header}>React Native Reanimated Switch</Text>
         <Text style={styles.header}>Default </Text>
-        <RNSwitch handleOnPress={() => {}} />
+        <RNSwitch handleOnPress={handleOnPressSwitch} value={switchState} />
         <Text style={styles.header}>Color Customisable </Text>
         <View style={styles.switchContainer}>
-          <RNSwitch handleOnPress={() => {}} activeTrackColor="#FE5F8F" />
-          <RNSwitch handleOnPress={() => {}} activeTrackColor="#667eea" />
-          <RNSwitch handleOnPress={() => {}} activeTrackColor="#ed8936" />
-          <RNSwitch handleOnPress={() => {}} activeTrackColor="#feb2b2" />
+          <RNSwitch
+            handleOnPress={handleOnPressSwitch}
+            activeTrackColor="#FE5F8F"
+          />
+          <RNSwitch
+            handleOnPress={handleOnPressSwitch}
+            activeTrackColor="#667eea"
+          />
+          <RNSwitch
+            handleOnPress={handleOnPressSwitch}
+            activeTrackColor="#ed8936"
+          />
+          <RNSwitch
+            handleOnPress={handleOnPressSwitch}
+            activeTrackColor="#feb2b2"
+          />
         </View>
       </SafeAreaView>
     </>
