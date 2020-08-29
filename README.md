@@ -75,13 +75,14 @@ project.ext.react = [
 ## :mag: Usage
 
 ```js
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
 import RNSwitch from "./src/Switch";
 
 const App = () => {
+  const [switchState, setSwitchState] = useState(false);
   const handleOnPressSwitch = (value) => {
-    console.log(value);
+    setSwitchState(value);
   };
   return (
     <>
@@ -89,7 +90,7 @@ const App = () => {
       <SafeAreaView style={styles.container}>
         <Text style={styles.header}>React Native Reanimated Switch</Text>
         <Text style={styles.header}>Default </Text>
-        <RNSwitch handleOnPress={handleOnPressSwitch} />
+        <RNSwitch handleOnPress={handleOnPressSwitch} value={switchState} />
         <Text style={styles.header}>Color Customisable </Text>
         <View style={styles.switchContainer}>
           <RNSwitch
@@ -147,6 +148,7 @@ export default App;
 
 | Name               | Description                              | Required | Type     | Default |
 | ------------------ | ---------------------------------------- | -------- | -------- | ------- |
+| value              | State of switch component                | YES      | Boolean  | #007AFF |
 | handleOnPress      | A callback with the current switch state | YES      | Function | -       |
 | activeTrackColor   | The track color when switch is active    | NO       | Color    | #007AFF |
 | inActiveTrackColor | The track color when switch is inactive  | NO       | Color    | #F2F5F7 |
