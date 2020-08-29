@@ -1,10 +1,11 @@
 {
   "name": "react-native-reanimated-switch",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple reanimated switch for iOS and Android",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
   },
   "peerDependencies": {
     "react": "16.x",
