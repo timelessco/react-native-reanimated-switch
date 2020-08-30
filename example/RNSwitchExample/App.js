@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
-import RNSwitch from './src/Switch';
+import RNSwitch from 'react-native-reanimated-switch';
 
 const App = () => {
   const [switchState, setSwitchState] = useState(false);
