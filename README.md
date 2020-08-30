@@ -1,11 +1,13 @@
 <div align='center'>
   
-  <!-- ![npm](https://badgen.net/badge/license/MIT/blue)
+  ![npm](https://badgen.net/badge/license/MIT/blue)
   [![npm](https://badgen.net/npm/dt/react-native-reanimated-switch)](https://www.npmjs.com/package/react-native-reanimated-switch)
-  [![npm](https://badgen.net/npm/v/react-native-reanimated-switch)](https://www.npmjs.com/package/react-native-reanimated-switch) -->
+  [![npm](https://badgen.net/npm/v/react-native-reanimated-switch)](https://www.npmjs.com/package/react-native-reanimated-switch)
 
   <h1>React Native Reanimated Switch</h1>
-  
+  <img width="auto" height="550" src="./assets/ios.gif">
+  <img width="auto" height="550" src="./assets/android.gif">
+
 </div>
 
 ## :anchor: Installation
@@ -34,40 +36,6 @@ cd ios && pod install && cd ..
 
 ```
 
-For Android
-
-1. Turn on Hermes engine by editing android/app/build.gradle
-
-```code
-
-project.ext.react = [
-  enableHermes: true  // <- here | clean and rebuild if changing
-]
-
-```
-
-2. Plug Reanimated in MainApplication.java
-
-```code
-  import com.facebook.react.bridge.JSIModulePackage; // <- add
-  import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add
-  ...
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-  ...
-
-      @Override
-      protected String getJSMainModuleName() {
-        return "index";
-      }
-
-      @Override
-      protected JSIModulePackage getJSIModulePackage() {
-        return new ReanimatedJSIModulePackage(); // <- add
-      }
-    };
-  ...
-```
-
 > For detailed instructions check it out [here](https://docs.swmansion.com/react-native-reanimated/docs/next/installation)
 
 > Rebuild the project after adding the dependencies
@@ -86,7 +54,11 @@ const App = () => {
   };
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar
+        barStyle="dark-content"
+        translucent={true}
+        backgroundColor="white"
+      />
       <SafeAreaView style={styles.container}>
         <Text style={styles.header}>React Native Reanimated Switch</Text>
         <Text style={styles.header}>Default </Text>
@@ -96,18 +68,22 @@ const App = () => {
           <RNSwitch
             handleOnPress={handleOnPressSwitch}
             activeTrackColor="#FE5F8F"
+            value={switchState}
           />
           <RNSwitch
             handleOnPress={handleOnPressSwitch}
             activeTrackColor="#667eea"
+            value={switchState}
           />
           <RNSwitch
             handleOnPress={handleOnPressSwitch}
             activeTrackColor="#ed8936"
+            value={switchState}
           />
           <RNSwitch
             handleOnPress={handleOnPressSwitch}
             activeTrackColor="#feb2b2"
+            value={switchState}
           />
         </View>
       </SafeAreaView>
@@ -122,6 +98,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "white",
   },
   header: {
     fontSize: 24,
