@@ -9,7 +9,11 @@ const App = () => {
   };
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar
+        barStyle="dark-content"
+        translucent={true}
+        backgroundColor="white"
+      />
       <SafeAreaView style={styles.container}>
         <Text style={styles.header}>React Native Reanimated Switch</Text>
         <Text style={styles.header}>Default </Text>
@@ -19,18 +23,22 @@ const App = () => {
           <RNSwitch
             handleOnPress={handleOnPressSwitch}
             activeTrackColor="#FE5F8F"
+            value={switchState}
           />
           <RNSwitch
             handleOnPress={handleOnPressSwitch}
             activeTrackColor="#667eea"
+            value={switchState}
           />
           <RNSwitch
             handleOnPress={handleOnPressSwitch}
             activeTrackColor="#ed8936"
+            value={switchState}
           />
           <RNSwitch
             handleOnPress={handleOnPressSwitch}
             activeTrackColor="#feb2b2"
+            value={switchState}
           />
         </View>
       </SafeAreaView>
@@ -45,6 +53,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   header: {
     fontSize: 24,
