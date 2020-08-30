@@ -10,8 +10,7 @@
   "peerDependencies": {
     "react": "16.x",
     "react-native": "0.62.x",
-    "react-native-reanimated": "*",
-    "react-native-svg": "*"
+    "react-native-reanimated": "*"
   },
   "files": [
     "src"
