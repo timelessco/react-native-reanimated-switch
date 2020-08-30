@@ -5,8 +5,8 @@
   [![npm](https://badgen.net/npm/v/react-native-reanimated-switch)](https://www.npmjs.com/package/react-native-reanimated-switch)
 
   <h1>React Native Reanimated Switch</h1>
-  <img width="auto" height="550" src="./example/RNSwitchExamople/assets/ios.gif">
-  <img width="auto" height="550" src="./example/RNSwitchExamople/assets/android.gif">
+  <img width="auto" height="550" src="./example/RNSwitchExample/assets/ios.gif">
+  <img width="auto" height="550" src="./example/RNSwitchExample/assets/android.gif">
 
 </div>
 
