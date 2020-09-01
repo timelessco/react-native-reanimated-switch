@@ -131,7 +131,7 @@ Checkout the example [here](https://github.com/timelessco/react-native-reanimate
 
 ## :notebook: Blog
 
-Will Update Soon.
+Read my blog [here](https://medium.com/timeless/react-native-reanimated-switch-83c331af7877?source=friends_link&sk=7155a8907037c741e717d081a4a29498)
 
 ## :snowman: Built with ❤️ and
 
