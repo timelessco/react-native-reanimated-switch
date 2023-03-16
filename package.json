@@ -38,5 +38,8 @@
   "devDependencies": {
     "metro-react-native-babel-preset": "^0.60.0",
     "standard-version": "^9.0.0"
+  },
+  "dependencies": {
+    "react-native-reanimated": "^3.0.2"
   }
 }
