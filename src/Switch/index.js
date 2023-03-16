@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Pressable, StyleSheet } from "react-native";
-import Animated, { interpolateColors, spring } from "react-native-reanimated";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  interpolateColor,
+} from "react-native-reanimated";
 
 const RNSwitch = ({
   handleOnPress,
@@ -10,38 +15,43 @@ const RNSwitch = ({
   thumbColor,
   value,
 }) => {
-  const [switchTranslate] = useState(new Animated.Value(0));
+
+  const switchTranslate = useSharedValue(0);
+
   useEffect(() => {
     if (value) {
-      spring(switchTranslate, {
-        toValue: 21,
+      switchTranslate.value = withSpring(21, {
         mass: 1,
         damping: 15,
         stiffness: 120,
         overshootClamping: false,
         restSpeedThreshold: 0.001,
         restDisplacementThreshold: 0.001,
-      }).start();
+      });
     } else {
-      spring(switchTranslate, {
-        toValue: 0,
+      switchTranslate.value = withSpring(0, {
         mass: 1,
         damping: 15,
         stiffness: 120,
         overshootClamping: false,
         restSpeedThreshold: 0.001,
         restDisplacementThreshold: 0.001,
-      }).start();
+      });
     }
   }, [value, switchTranslate]);
-  const interpolateBackgroundColor = {
-    backgroundColor: interpolateColors(switchTranslate, {
-      inputRange: [0, 22],
-      outputColorRange: [inActiveTrackColor, activeTrackColor],
-    }),
-  };
-  const memoizedOnSwitchPressCallback = React.useCallback(() => {
-    handleOnPress(!value);
+
+  const interpolateBackgroundColor = useAnimatedStyle(() => {
+    return {
+      backgroundColor: interpolateColor(
+        switchTranslate.value,
+        [0, 22],
+        [inActiveTrackColor, activeTrackColor]
+      ),
+    };
+  });
+
+  const memoizedOnSwitchPressCallback = useMemo(() => {
+    return () => handleOnPress(!value);
   }, [handleOnPress, value]);
 
   return (
@@ -66,7 +76,8 @@ const RNSwitch = ({
       </Animated.View>
     </Pressable>
   );
-};
+}
+
 
 const styles = StyleSheet.create({
   circleStyle: {
@@ -93,7 +104,7 @@ const styles = StyleSheet.create({
   },
 });
 
-RNSwitch.propTypes = {
+RNswitch.propTypes = {
   handleOnPress: PropTypes.func.isRequired,
   value: PropTypes.bool.isRequired,
   activeTrackColor: PropTypes.string,
@@ -101,10 +112,10 @@ RNSwitch.propTypes = {
   thumbColor: PropTypes.string,
 };
 
-RNSwitch.defaultProps = {
+RNswitch.defaultProps = {
   activeTrackColor: "#007AFF",
   inActiveTrackColor: "#F2F5F7",
   thumbColor: "#FFF",
 };
 
-export default RNSwitch;
+export default RNswitch;
